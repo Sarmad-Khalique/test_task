@@ -42,5 +42,5 @@ jobs:
         run: npm install --global surge
       
       - name: Deploy on Surge
-        run: surge ./build react-crud.surge.sh --token ${{secrets.SURGE_TOKEN}}
+        run: surge ./build sarmad-react-crud.surge.sh --token ${{secrets.SURGE_TOKEN}}
           echo test, and deploy your project.
