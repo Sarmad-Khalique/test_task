@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Typography, Stack, Alert } from "@mui/material";
+import { Typography, Stack, Alert, Divider } from "@mui/material";
 import { TaskListContainer } from "./TaskList.styles";
 import { GlobalContext } from "../../context/GlobalContext";
 import TaskItem from "../task-item/TaskItem.component";
@@ -16,7 +16,12 @@ const TasksList = () => {
         {tasks.length === 0 ? (
           <Alert severity="info">No Task Added Yet</Alert>
         ) : (
-          tasks.map((task) => <TaskItem key={task.id} task={task} />)
+          tasks.map((task) => (
+            <>
+              <TaskItem key={task.id} task={task} />
+              <Divider />
+            </>
+          ))
         )}
       </Stack>
     </TaskListContainer>

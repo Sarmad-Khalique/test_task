@@ -4,15 +4,10 @@ import { FormContainer, TaskFormContainer } from "./TaskForm.styles";
 import {
   Typography,
   Checkbox,
-  FormControlLabel,
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
+  FormControlLabel
 } from "@mui/material";
 import { Button } from "@mui/material";
 import { GlobalContext } from "../../context/GlobalContext";
-
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 const TaskForm = () => {
   const { addTaskToList } = useContext(GlobalContext);
@@ -50,67 +45,59 @@ const TaskForm = () => {
     addTaskToList({ id, title, description, status, createdAt, updatedAt });
 
     setTaskObject({
-        id: "",
-        title: "",
-        description: "",
-        status: false,
-        createdAt: "",
-        updatedAt: "",
-      });
+      id: "",
+      title: "",
+      description: "",
+      status: false,
+      createdAt: "",
+      updatedAt: "",
+    });
   };
   let { title, description, status } = taskObject;
   return (
-    <Accordion>
-      <AccordionSummary
-        expandIcon={<ExpandMoreIcon />}
-        aria-controls="panel1a-content"
-        id="panel1a-header"
-      >
-        <Typography variant="h6" color="secondary" sx={{ textAlign: "center" }}>
-          Add New Task
-        </Typography>
-      </AccordionSummary>
-      <AccordionDetails>
-        <TaskFormContainer>
-          <FormContainer onSubmit={onSubmit}>
-            <FormInput
-              type="text"
-              name="title"
-              onChange={handleChange}
-              value={title}
-              label="Title"
-            />
-            <FormInput
-              type="text"
-              name="description"
-              onChange={handleChange}
-              value={description}
-              label="Description"
-            />
-            <FormControlLabel
-              label={`${status ? "Completed" : "Uncomplete"}`}
-              control={
-                <Checkbox
-                  value={status}
-                  checked={status ? true : false}
-                  onChange={handleCheckboxClick}
-                  color="secondary"
-                />
-              }
-              sx={{ display: "block" }}
-            />
-            <Button
-              variant="contained"
-              color="secondary"
-              type="submit"
-              sx={{ width: "100%" }}
-            >
-              Add Task
-            </Button>
-          </FormContainer>
-        </TaskFormContainer>
-      </AccordionDetails>
-    </Accordion>
+    <React.Fragment>
+      <Typography variant="h6" color="secondary" sx={{ textAlign: "center" }}>
+        Add New Task
+      </Typography>
+      <TaskFormContainer>
+        <FormContainer onSubmit={onSubmit}>
+          <FormInput
+            type="text"
+            name="title"
+            onChange={handleChange}
+            value={title}
+            label="Title"
+          />
+          <FormInput
+            type="text"
+            name="description"
+            onChange={handleChange}
+            value={description}
+            label="Description"
+          />
+          <FormControlLabel
+            label={`${status ? "Completed" : "Uncomplete"}`}
+            control={
+              <Checkbox
+                value={status}
+                checked={status ? true : false}
+                onChange={handleCheckboxClick}
+                color="secondary"
+              />
+            }
+            sx={{ display: "block" }}
+          />
+          <Button
+            variant="contained"
+            color="secondary"
+            type="submit"
+            sx={{ width: "100%" }}
+          >
+            Add Task
+          </Button>
+        </FormContainer>
+      </TaskFormContainer>
+    </React.Fragment>
   );
 };
 
