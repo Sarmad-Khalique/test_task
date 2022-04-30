@@ -9,9 +9,6 @@ const CardContainer = () => {
   return (
     <MainContainer>
       <div className="card">
-        <Typography gutterBottom variant="h4" color="secondary" sx={{textAlign:"center"}}>
-          Tasks List
-        </Typography>
         <TasksList />
         <TaskForm />
       </div>
