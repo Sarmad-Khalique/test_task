@@ -19,14 +19,14 @@ const TaskDetail = ({ task }) => {
       <Typography variant="h6" color="secondary">
         Title
       </Typography>
-      <Typography variant="body1" color="text.secondary">
+      <Typography className="wrapped-text" variant="body1" color="text.secondary">
         {title}
       </Typography>
       <Divider />
       <Typography variant="h6" color="secondary">
         Description
       </Typography>
-      <Typography variant="body1" color="text.secondary">
+      <Typography className="wrapped-text" variant="body1" color="text.secondary">
         {description}
       </Typography>
       <Divider />
