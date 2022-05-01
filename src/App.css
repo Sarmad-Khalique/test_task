@@ -9,3 +9,6 @@ a{
 a > h6{
     color: white;
 }
+p{
+    overflow-wrap: anywhere;
+}
