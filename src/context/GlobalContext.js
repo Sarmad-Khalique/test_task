@@ -1,20 +1,5 @@
 import React, { createContext, useState } from "react";
-import { getObjectFromList } from "../components/utils/utils";
-
-const addTask = (tasksList, taskToBeAdded) => {
-  return [...tasksList, { ...taskToBeAdded }];
-};
-
-const deleteTask = (taskList, taskToBeRemoved) => {
-  return taskList.filter((taskObj) => taskObj.id !== taskToBeRemoved.id);
-};
-
-const updateTask = (taskList, taskToBeUpdated) => {
-  console.log("In Task Update: ", taskToBeUpdated);
-  return taskList.map((task) =>
-    task.id == taskToBeUpdated.id ? { ...taskToBeUpdated } : task
-  );
-};
+import { getObjectFromList, addTask, deleteTask,updateTask } from "../utils/utils";
 
 const initialState = [
   {

@@ -4,4 +4,8 @@ a{
     justify-content: space-between;
     align-items: center;
     padding-right: 0.5rem;
+    color: black;
+}
+a > h6{
+    color: white;
 }
