@@ -1,12 +1,8 @@
-import React, { useContext, useId, useState } from "react";
+import React, { useContext, useState } from "react";
 import FormInput from "../form-input/FormInput";
 import { FormContainer, TaskFormContainer } from "./TaskForm.styles";
-import {
-  Typography,
-  Checkbox,
-  FormControlLabel
-} from "@mui/material";
-import { Button } from "@mui/material";
+import { Checkbox, FormControlLabel } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import { GlobalContext } from "../../context/GlobalContext";
 
 const TaskForm = () => {
@@ -67,6 +63,7 @@ const TaskForm = () => {
             onChange={handleChange}
             value={title}
             label="Title"
+            required
           />
           <FormInput
             type="text"
@@ -74,6 +71,7 @@ const TaskForm = () => {
             onChange={handleChange}
             value={description}
             label="Description"
+            required
           />
           <FormControlLabel
             label={`${status ? "Completed" : "Uncomplete"}`}

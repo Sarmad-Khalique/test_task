@@ -16,12 +16,7 @@ const TasksList = () => {
         {tasks.length === 0 ? (
           <Alert severity="info">No Task Added Yet</Alert>
         ) : (
-          tasks.map((task) => (
-            <>
-              <TaskItem key={task.id} task={task} />
-              <Divider />
-            </>
-          ))
+          tasks.map((task) => <TaskItem key={task.id} task={task} />)
         )}
       </Stack>
     </TaskListContainer>

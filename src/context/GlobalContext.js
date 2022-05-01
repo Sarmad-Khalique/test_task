@@ -1,12 +1,25 @@
-import Recat, { createContext, useState } from "react";
+import React, { createContext, useState } from "react";
+import { getObjectFromList } from "../components/utils/utils";
 
-const addTask = (tasksList, task) => {
-  return [...tasksList, { ...task }];
+const addTask = (tasksList, taskToBeAdded) => {
+  return [...tasksList, { ...taskToBeAdded }];
+};
+
+const deleteTask = (taskList, taskToBeRemoved) => {
+  return taskList.filter((taskObj) => taskObj.id !== taskToBeRemoved.id);
+};
+
+const updateTask = (taskList, taskToBeUpdated) => {
+  console.log("In Task Update: ", taskToBeUpdated);
+  return taskList.map((task) =>
+    task.id == taskToBeUpdated.id ? { ...taskToBeUpdated } : task
+  );
 };
 
 const initialState = [
   {
-    addTask: () => {},
+    addTaskToList: () => {},
+    deleteTaskFromList: () => {},
     tasks: [],
   },
 ];
@@ -15,13 +28,27 @@ export const GlobalContext = createContext(initialState);
 const GlobalProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]);
 
-  const addTaskToList = (task) => {
-    setTasks(addTask(tasks, task));
+  const getObject = (requiredObject) => {
+    return getObjectFromList(tasks, requiredObject);
   };
 
+  const addTaskToList = (taskToBeAdded) => {
+    setTasks(addTask(tasks, taskToBeAdded));
+  };
+
+  const deleteTaskFromList = (taskToBeRemoved) => {
+    setTasks(deleteTask(tasks, taskToBeRemoved));
+  };
+
+  const upadteTaskInList = (taskToBeUpdated) => {
+    setTasks(updateTask(tasks, taskToBeUpdated));
+  };
   const value = {
     tasks,
     addTaskToList,
+    deleteTaskFromList,
+    upadteTaskInList,
+    getObject,
   };
 
   return (
